@@ -1,4 +1,4 @@
-package de.fu_berlin.agdb;
+package de.fu_berlin.agdb.authentication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,10 +18,10 @@ public class UserLocalStore {
 
     public void storeUserData(User user) {
         SharedPreferences.Editor userLocalDatabaseEditor = userLocalDatabase.edit();
-        userLocalDatabaseEditor.putString("name", user.name);
-        userLocalDatabaseEditor.putString("username", user.username);
-        userLocalDatabaseEditor.putString("password", user.password);
-        userLocalDatabaseEditor.putInt("age", user.age);
+        userLocalDatabaseEditor.putString("name", "bla");
+        userLocalDatabaseEditor.putString("username", "mein username");
+        userLocalDatabaseEditor.putString("password", "krasses Passwort");
+        userLocalDatabaseEditor.putInt("age", 27);
         userLocalDatabaseEditor.commit();
     }
 

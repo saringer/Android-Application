@@ -1,4 +1,4 @@
-package de.fu_berlin.agdb;
+package de.fu_berlin.agdb.authentication;
 
 public class User {
 

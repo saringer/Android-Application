@@ -1,14 +1,15 @@
-package de.fu_berlin.agdb;
+package de.fu_berlin.agdb.authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import de.fu_berlin.agdb.R;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     UserLocalStore userLocalStore;
     EditText etName, etAge, etUsername;
@@ -28,6 +29,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         userLocalStore = new UserLocalStore(this);
     }
+
+
+
 
     @Override
     public void onClick(View v) {
