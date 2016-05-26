@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import de.fu_berlin.agdb.R;
+import de.fu_berlin.agdb.activities.Notification;
+
+//import de.fu_berlin.agdb.activities.Notification;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -14,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     UserLocalStore userLocalStore;
     EditText etName, etAge, etUsername;
     Button bLogout;
+    Button bNotification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etName = (EditText) findViewById(R.id.etName);
         etAge = (EditText) findViewById(R.id.etAge);
         bLogout = (Button) findViewById(R.id.bLogout);
+        bNotification = (Button) findViewById(R.id.bNotification);
 
         bLogout.setOnClickListener(this);
+        bNotification.setOnClickListener(this);
 
         userLocalStore = new UserLocalStore(this);
     }
@@ -41,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 userLocalStore.setUserLoggedIn(false);
                 Intent loginIntent = new Intent(this, Login.class);
                 startActivity(loginIntent);
+                break;
+            case R.id.bNotification:
+                Intent NotificationIntent = new Intent(this, Notification.class);
+                startActivity(NotificationIntent);
                 break;
         }
     }
