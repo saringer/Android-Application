@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:background="#0277bd"
+              android:orientation="vertical"
+                android:layout_height="match_parent">
+    <TextView
+            android:id="@+id/result_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="Am 20.06.2016 wurde folgende Benachrichtigung ausgelöst:
+
+            'Benachrichtige mich wenn es zu einem schweren Sturm in meinem Garten kommt'"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+                android:id="@+id/dismiss_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onDismissClick"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:textColor="#ffffff"
+                android:background="#64dd17"
+
+                android:text="close" />
+
+
+</LinearLayout>

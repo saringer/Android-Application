@@ -2,10 +2,9 @@ package de.fu_berlin.agdb.authentication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import de.fu_berlin.agdb.data.User;
 
-/**
- * Created by tundealao on 29/03/15.
- */
+
 public class UserLocalStore {
 
     public static final String SP_NAME = "userDetails";
@@ -18,10 +17,9 @@ public class UserLocalStore {
 
     public void storeUserData(User user) {
         SharedPreferences.Editor userLocalDatabaseEditor = userLocalDatabase.edit();
-        userLocalDatabaseEditor.putString("name", "bla");
-        userLocalDatabaseEditor.putString("username", "mein username");
-        userLocalDatabaseEditor.putString("password", "krasses Passwort");
-        userLocalDatabaseEditor.putInt("age", 27);
+        userLocalDatabaseEditor.putString("email", user.getEmail());
+        userLocalDatabaseEditor.putString("username", user.getUsername());
+        userLocalDatabaseEditor.putString("password", user.getPassword());
         userLocalDatabaseEditor.commit();
     }
 
@@ -45,9 +43,8 @@ public class UserLocalStore {
         String name = userLocalDatabase.getString("name", "");
         String username = userLocalDatabase.getString("username", "");
         String password = userLocalDatabase.getString("password", "");
-        int age = userLocalDatabase.getInt("age", -1);
 
-        User user = new User(name, age, username, password);
+        User user = new User(name, username, password);
         return user;
     }
 }

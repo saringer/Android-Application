@@ -6,26 +6,23 @@ package de.fu_berlin.agdb.adapters;
 
 
 import android.content.Context;
-        import android.text.TextUtils;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.BaseAdapter;
-        import android.widget.Filter;
-        import android.widget.Filterable;
-        import android.widget.TextView;
-
-        import com.mapbox.geocoder.GeocoderCriteria;
-        import com.mapbox.geocoder.MapboxGeocoder;
-        import com.mapbox.geocoder.service.models.GeocoderFeature;
-        import com.mapbox.geocoder.service.models.GeocoderResponse;
-
-        import java.io.IOException;
-        import java.util.List;
-
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.TextView;
+import com.mapbox.geocoder.MapboxGeocoder;
+import com.mapbox.geocoder.service.models.GeocoderFeature;
+import com.mapbox.geocoder.service.models.GeocoderResponse;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import de.fu_berlin.agdb.Constants;
+import de.fu_berlin.agdb.data.Constants;
 import retrofit.Response;
+
+import java.io.IOException;
+import java.util.List;
 
 
 public class GeocoderAdapter extends BaseAdapter implements Filterable {
@@ -106,13 +103,11 @@ public class GeocoderAdapter extends BaseAdapter implements Filterable {
             if (TextUtils.isEmpty(constraint)) {
                 return results;
             }
-            LatLng dahlemDorf = new LatLng(52.455680, 13.294469);
 
             // The geocoder client
             MapboxGeocoder client = new MapboxGeocoder.Builder()
                     .setAccessToken(Constants.MAPBOX_ACCESS_TOKEN)
                     .setLocation(constraint.toString())
-                    //.setProximity(Position.fromCoordinates(dahlemDorf.getLongitude(), dahlemDorf.getLatitude()))
                     .build();
 
             Response<GeocoderResponse> response;

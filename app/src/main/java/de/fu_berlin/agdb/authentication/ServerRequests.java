@@ -2,174 +2,95 @@ package de.fu_berlin.agdb.authentication;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
+import de.fu_berlin.agdb.data.User;
+import de.fu_berlin.agdb.server_requests.ApiInterface;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
-import java.util.ArrayList;
+import static de.fu_berlin.agdb.data.Constants.BASE_URL;
 
 
 public class ServerRequests {
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
+    Context context;
     //public static final String SERVER_ADDRESS = "http://localhost:8060/";
 
+    public ServerRequests() {
+
+    }
+
     public ServerRequests(Context context) {
+        this.context = context;
         progressDialog = new ProgressDialog(context);
         progressDialog.setCancelable(false);
         progressDialog.setTitle("Processing...");
         progressDialog.setMessage("Please wait...");
     }
 
-    public void storeUserDataInBackground(User user,
-                                          GetUserCallback userCallBack) {
-        progressDialog.show();
-        new StoreUserDataAsyncTask(user, userCallBack).execute();
+
+    private ApiInterface getInterfaceService() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        final ApiInterface mInterfaceService = retrofit.create(ApiInterface.class);
+        return mInterfaceService;
     }
 
-    public void fetchUserDataAsyncTask(User user, GetUserCallback userCallBack) {
-        progressDialog.show();
-        new fetchUserDataAsyncTask(user, userCallBack).execute();
-    }
 
-    /**
-     * parameter sent to task upon execution progress published during
-     * background computation result of the background computation
-     */
+    public void userRegistrationProcessWithRetrofit(User user) {
 
-    public class StoreUserDataAsyncTask extends AsyncTask<Void, Void, Void> {
-        User user;
-        GetUserCallback userCallBack;
+        ApiInterface mApiService = this.getInterfaceService();
+        Call<ResponseBody> call = mApiService.createUser(user);
+        call.enqueue(new Callback<ResponseBody>() {
 
-        public StoreUserDataAsyncTask(User user, GetUserCallback userCallBack) {
-            this.user = user;
-            this.userCallBack = userCallBack;
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
-            dataToSend.add(new BasicNameValuePair("name", user.name));
-            dataToSend.add(new BasicNameValuePair("username", user.username));
-            dataToSend.add(new BasicNameValuePair("password", user.password));
-            dataToSend.add(new BasicNameValuePair("age", user.age + ""));
-
-            HttpParams httpRequestParams = getHttpRequestParams();
-
-            HttpClient client = new DefaultHttpClient(httpRequestParams);
-            HttpPost post = new HttpPost("");
-
-            try {
-                post.setEntity(new UrlEncodedFormEntity(dataToSend));
-                client.execute(post);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        private HttpParams getHttpRequestParams() {
-            HttpParams httpRequestParams = new BasicHttpParams();
-            HttpConnectionParams.setConnectionTimeout(httpRequestParams,
-                    CONNECTION_TIMEOUT);
-            HttpConnectionParams.setSoTimeout(httpRequestParams,
-                    CONNECTION_TIMEOUT);
-            return httpRequestParams;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            progressDialog.dismiss();
-            userCallBack.done(null);
-        }
-
-    }
-
-    public class fetchUserDataAsyncTask extends AsyncTask<Void, Void, User> {
-        User user;
-        GetUserCallback userCallBack;
-
-        public fetchUserDataAsyncTask(User user, GetUserCallback userCallBack) {
-            this.user = user;
-            this.userCallBack = userCallBack;
-        }
-
-        @Override
-        protected User doInBackground(Void... params) {
-            String json;
-            json = "";
-            User u = new User("bla","bla");
-            ObjectMapper mapper = new ObjectMapper();
-            try {
-               json  = mapper.writeValueAsString(u);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccess()) {
+                    // Registration successful
+                    progressDialog.show();
+                    Toast.makeText(context, "Your registration was successful", Toast.LENGTH_SHORT).show();
+                    Intent loginIntent = new Intent(context, LoginActivity.class);
+                    context.startActivity(loginIntent);
+                    progressDialog.dismiss();
 
 
+                } else {
+                    // There is already an account with given email
+                    if (response.code() == 409) {
+                        Toast.makeText(context, "The given email is already in use", Toast.LENGTH_SHORT).show();
 
-            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
-            dataToSend.add(new BasicNameValuePair("json", json));
-            //dataToSend.add(new BasicNameValuePair("password", user.password));
+                    } else {
+                        // Registration failed
+                        Log.d("error message: ", response.message());
+                        Toast.makeText(context, "Registration failed", Toast.LENGTH_SHORT).show();
 
-            HttpParams httpRequestParams = new BasicHttpParams();
-            HttpConnectionParams.setConnectionTimeout(httpRequestParams,
-                    CONNECTION_TIMEOUT);
-            HttpConnectionParams.setSoTimeout(httpRequestParams,
-                    CONNECTION_TIMEOUT);
+                    }
 
-            HttpClient client = new DefaultHttpClient(httpRequestParams);
-            HttpPost post = new HttpPost("http://localhost:8060/androidlogin");
 
-            User returnedUser = null;
-
-            try {
-                post.setEntity(new UrlEncodedFormEntity(dataToSend));
-                HttpResponse httpResponse = client.execute(post);
-
-                HttpEntity entity = httpResponse.getEntity();
-                String result = EntityUtils.toString(entity);
-                JSONObject jObject = new JSONObject(result);
-
-                if (jObject.length() != 0){
-                    Log.v("happened", "2");
-                    String name = jObject.getString("name");
-                    int age = jObject.getInt("age");
-
-                    returnedUser = new User(name, age, user.username,
-                            user.password);
                 }
 
-            } catch (Exception e) {
-                e.printStackTrace();
             }
 
-            return returnedUser;
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                Log.d("Error", t.getMessage());
+
+            }
+
+        });
 
 
-        }
-
-        @Override
-        protected void onPostExecute(User returnedUser) {
-            super.onPostExecute(returnedUser);
-            progressDialog.dismiss();
-            userCallBack.done(returnedUser);
-        }
     }
+
+
 }

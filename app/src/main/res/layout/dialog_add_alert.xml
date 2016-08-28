@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:fillViewport="true"
+            android:isScrollContainer="false"
+
+            android:layout_height="match_parent">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:baselineAligned="false"
+                  android:orientation="vertical"
+                  android:id="@+id/dialogAddAlertOrientationLayout"
+                  android:layout_height="match_parent">
+
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_weight="0.50"
+                      android:padding="10dp"
+                      android:background="#2196f3"
+                      android:layout_height="match_parent">
+
+            <com.joanzapata.iconify.widget.IconTextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:scaleType="center"
+
+                    android:textColor="#FFFFFF"
+                    android:text="{fa-calendar}"
+                    android:textSize="35sp"
+
+                    android:gravity="center"
+                    android:contentDescription="@string/app_name"/>
+            <TextView
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Custom Alert"
+            />
+            <TextView
+
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Create a custom alert covering the next 7 days for dates of your interest. Your alert can exist of more than one constraint."
+            />
+
+            <com.joanzapata.iconify.widget.IconButton
+                    android:id="@+id/customAlert"
+                    android:layout_width="wrap_content"
+                    android:text="{fa-calendar} continue with custom alert"
+                    android:layout_gravity="center"
+                    android:background="#2196f3"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:padding="10dp"
+                      android:background="#ff0000"
+                      android:layout_weight="0.50"
+                      android:layout_height="match_parent">
+
+            <com.joanzapata.iconify.widget.IconTextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:scaleType="center"
+
+                    android:textColor="#FFFFFF"
+                    android:text="{fa-bell}"
+                    android:textSize="35sp"
+
+                    android:gravity="center"
+                    android:contentDescription="@string/app_name"/>
+            <TextView
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Immediate Alert"
+            />
+            <TextView
+
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Create an immediate alert which will cover the next 7 days and alert you as soon as your constraints will be triggered.    "
+            />
+            <com.joanzapata.iconify.widget.IconButton
+                    android:id="@+id/immediateAlert"
+                    android:layout_width="wrap_content"
+                    android:text="{fa-bell} continue with immediate alert"
+                    android:layout_gravity="center"
+                    android:background="#ff0000"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>

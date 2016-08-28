@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Iris</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="button_cancel">Cancel</string>
+
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_settings">Settings</string>
     <string name="title_activity_register">Register</string>
-    <string name="title_activity_notification">Notify Me</string>
-    <string name="action_current_location">Finde mich</string>
+    <string name="title_activity_notification">Notification</string>
+
+    <string name="app_name">Iris</string>
+    <string name="app_settings">{fa-cogs} Settings</string>
+    <string name="app_about">{fa-info} About</string>
+    <string name="app_notification">{fa-commenting-o} Notification</string>
+    <string name="app_logout">{fa-sign-out} Logout</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_current_location">Current Location</string>
 
     <string name="unique_notification">Einmalige Benachrichtigung</string>
     <string name="repeatable_notification">Regelmäßige Benachrichtigung</string>
+
+
+    <string name="notifications_header1">Activated Alerts</string>
+
+    <string name="settings_language">Language</string>
+    <string name="settings_choose_language">Select your language</string>
 
 
 </resources>
