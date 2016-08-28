@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="de.fu_berlin.agdb.settings.SettingsActivity">
+
+    <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+
+        <include layout="@layout/toolbar"
+                 android:id="@+id/toolbar"
+                 android:background="#00b4f0"/>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:padding="20dp"
+                  android:layout_margin="50dp"
+
+                  android:background="#ebeff2"
+                  android:orientation="vertical">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="20sp"
+        android:text="@string/settings_language"/>
+
+        <TextView
+                android:autoLink="all"
+                android:linksClickable="true"
+                android:id="@+id/tvSelectLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_choose_language"
+                android:clickable="true"
+                android:textColor="#2196f3"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_login">Anmeldung</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="title_activity_register">Registrierung</string>
+    <string name="title_activity_notification">Benachrichtigung</string>
+
+    <string name="app_name">Iris</string>
+    <string name="app_settings">{fa-cogs} Einstellungen</string>
+    <string name="app_about">{fa-info] Info</string>
+    <string name="app_notification">{fa-commenting-o} Benachrichtigung</string>
+    <string name="app_logout">{fa-sign-out} Abmelden</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="action_current_location">Current Location</string>
+
+    <string name="unique_notification">Einmalige Benachrichtigung</string>
+    <string name="repeatable_notification">Regelmäßige Benachrichtigung</string>
+
+
+    <string name="notifications_header1">Aktive Alarme</string>
+
+    <string name="settings_language">Sprache</string>
+    <string name="settings_choose_language">Wähle deine Sprache</string>
+
+
+</resources>

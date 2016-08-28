@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:id="@+id/linearlayout"
+              android:gravity="center"
+              android:layout_height="match_parent">
+
+
+    <TextView android:layout_width="match_parent"
+              android:background="?colorPrimaryDark"
+              android:layout_height="1dp"/>
+
+
+    <EditText
+            android:id="@+id/profileDescription"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:hint="Set up a description for your profile. You will receive a Notification which includes your description as soon as your rule got triggered!"
+            android:textSize="20sp"
+            android:gravity="left"
+            android:ellipsize="start"
+            android:layout_height="0dp"
+            android:textColor="#72cad0"/>
+
+
+    <TextView android:layout_width="match_parent"
+              android:background="?colorPrimaryDark"
+              android:layout_height="1dp"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:background="?colorPrimary"
+                  android:gravity="center"
+                  android:orientation="horizontal">
+
+
+        <com.joanzapata.iconify.widget.IconButton
+                android:id="@+id/submit"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/circle_button_green"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+
+                android:text="Create"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+

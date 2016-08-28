@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_weight="1"
+              android:background="#33f1f1f1"
+>
+
+
+    <TextView
+            android:id="@+id/profileDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:clickable="true"
+            android:layout_margin="@dimen/text_margin"
+            android:textSize="20sp"
+            android:background="@drawable/profile_list_item"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceListItem"/>
+
+    <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/deleteProfile"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="#FFFFFF"
+            android:layout_gravity="center"
+            android:textColor="#ff0000"
+            android:clickable="true"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:text="{fa-times}"
+    />
+
+
+</LinearLayout>

@@ -1,0 +1,116 @@
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout"
+
+
+>
+
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_weight="0.7"
+                  android:background="#ffffff"
+
+                  android:orientation="vertical">
+
+        <TextView
+                android:textAllCaps="false"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:text="Create Unique Notification"
+                android:gravity="center"
+
+                android:textStyle="bold"
+                android:textSize="18sp"
+                style="?android:attr/listSeparatorTextViewStyle"/>
+
+
+        <ListView
+                android:textAllCaps="false"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:background="#ffffff"
+
+                android:id="@id/android:list"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="center"
+                  android:background="#ffffff"
+                  android:gravity="center"
+                  android:orientation="vertical">
+
+        <LinearLayout android:layout_width="wrap_content"
+                      android:orientation="vertical"
+                      android:background="#ffffff"
+                      android:layout_weight="0.3"
+                      android:layout_height="match_parent">
+
+            <TextView
+                    android:textAllCaps="false"
+                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:text="Set a Description"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:background="@null"
+                    android:textStyle="bold"
+                    style="?android:attr/listSeparatorTextViewStyle"/>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="5dp"
+                    android:id="@+id/selected_location" android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+        <com.joanzapata.iconify.widget.IconButton
+                android:id="@+id/plusButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:text="{fa-plus}"
+                android:textColor="#ffffff"
+                android:textSize="25sp"
+                android:background="@drawable/circle_button"/>
+
+        <com.joanzapata.iconify.widget.IconButton
+                android:id="@+id/createButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/circle_button_green"
+                android:layout_margin="20dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:text="Create"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

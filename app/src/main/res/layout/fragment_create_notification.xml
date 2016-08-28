@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:orientation="vertical"
+              android:background="#ffffff"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:textAllCaps="false"
+            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:text="@string/notifications_header1"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            style="?android:attr/listSeparatorTextViewStyle"/>
+
+    <ListView
+            android:textAllCaps="false"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:id="@id/android:list"/>
+
+    <com.joanzapata.iconify.widget.IconButton
+            android:id="@+id/newNotification"
+            android:background="@drawable/circle_button"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+           android:paddingBottom="10dp"
+            android:layout_width="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:text="{fa-bell} \n New"
+            android:layout_height="100dp"/>
+
+</LinearLayout>

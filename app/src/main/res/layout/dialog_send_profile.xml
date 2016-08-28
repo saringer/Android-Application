@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/background1">
+
+
+
+    <EditText android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:inputType="textNoSuggestions|textCapWords"
+              android:ems="15"
+              android:layout_weight="1"
+              android:background="#ffffff"
+              android:textSize="20sp"
+              android:capitalize="none"
+              android:hint="Enter profile description"
+              android:id="@+id/profileDescription"
+
+              android:layout_margin="20dp"
+              android:layout_gravity="center_horizontal"/>
+
+    <Button android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="submit"
+            android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
